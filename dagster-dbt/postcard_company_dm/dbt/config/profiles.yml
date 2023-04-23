@@ -1,0 +1,12 @@
+## Refer to Using dbt with Dagster, part one for info about this file:
+## https://docs.dagster.io/integrations/dbt/using-dbt-with-dagster/part-one#step-2-create-a-duckdb-profile
+
+postcard_company:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: /shared/db/datamart.duckdb
+      schema: postcard_company
+      extensions:
+        - postgres_scanner

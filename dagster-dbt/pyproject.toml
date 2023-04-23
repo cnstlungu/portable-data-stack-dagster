@@ -1,0 +1,4 @@
+
+[tool.dagster]
+# Path to your Dagster repository
+repository = "postcard_company_dm"

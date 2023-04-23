@@ -1,0 +1,738 @@
+{
+    "dashboards": [
+        {
+            "__Dashboard__": {
+                "css": "",
+                "dashboard_title": "Sales dashboard",
+                "description": null,
+                "json_metadata": "{\"show_native_filters\": true, \"color_scheme\": \"\", \"refresh_frequency\": 0, \"expanded_slices\": {}, \"label_colors\": {}, \"timed_refresh_immune_slices\": [], \"default_filters\": \"{}\", \"chart_configuration\": {}, \"remote_id\": 1, \"import_time\": 1681681018}",
+                "position_json": "{\"CHART-7WjGvrkwzG\": {\"children\": [], \"id\": \"CHART-7WjGvrkwzG\", \"meta\": {\"chartId\": 2, \"height\": 50, \"sliceName\": \"Average order size $USD\", \"uuid\": \"b5831984-f848-442f-a6d8-a1c9ccf0d067\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-SHmED0WqsQ\"], \"type\": \"CHART\"}, \"CHART-Cw1AvID4c7\": {\"children\": [], \"id\": \"CHART-Cw1AvID4c7\", \"meta\": {\"chartId\": 4, \"height\": 50, \"sliceName\": \"Sales per country\", \"uuid\": \"efa78d70-0c5f-4925-ae89-3ed72831f4ef\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-SHmED0WqsQ\"], \"type\": \"CHART\"}, \"CHART-Njfu8-pQet\": {\"children\": [], \"id\": \"CHART-Njfu8-pQet\", \"meta\": {\"chartId\": 1, \"height\": 50, \"sliceName\": \"Sales by month\", \"uuid\": \"0b0d16f9-1093-4518-a780-ef72d828cf42\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-SHmED0WqsQ\"], \"type\": \"CHART\"}, \"CHART-Q76gE-bTZX\": {\"children\": [], \"id\": \"CHART-Q76gE-bTZX\", \"meta\": {\"chartId\": 6, \"height\": 50, \"sliceName\": \"Commission paid\", \"uuid\": \"fc4724df-3dec-496a-82ec-23666fa48e99\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-8IJbxxCgfo\"], \"type\": \"CHART\"}, \"CHART-qepyuTNQv0\": {\"children\": [], \"id\": \"CHART-qepyuTNQv0\", \"meta\": {\"chartId\": 5, \"height\": 50, \"sliceName\": \"Day of Week Trends\", \"uuid\": \"59832383-7f2a-4d5b-84e9-cbf19df47454\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-8IJbxxCgfo\"], \"type\": \"CHART\"}, \"CHART-sEXw3I6Ljd\": {\"children\": [], \"id\": \"CHART-sEXw3I6Ljd\", \"meta\": {\"chartId\": 3, \"height\": 50, \"sliceName\": \"Channel sales evolution\", \"uuid\": \"67f2472f-79d6-4ae8-b915-b79721083801\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-8IJbxxCgfo\"], \"type\": \"CHART\"}, \"DASHBOARD_VERSION_KEY\": \"v2\", \"GRID_ID\": {\"children\": [\"ROW-8IJbxxCgfo\", \"ROW-SHmED0WqsQ\"], \"id\": \"GRID_ID\", \"parents\": [\"ROOT_ID\"], \"type\": \"GRID\"}, \"HEADER_ID\": {\"id\": \"HEADER_ID\", \"meta\": {\"text\": \"Sales dashboard\"}, \"type\": \"HEADER\"}, \"ROOT_ID\": {\"children\": [\"GRID_ID\"], \"id\": \"ROOT_ID\", \"type\": \"ROOT\"}, \"ROW-8IJbxxCgfo\": {\"children\": [\"CHART-qepyuTNQv0\", \"CHART-sEXw3I6Ljd\", \"CHART-Q76gE-bTZX\"], \"id\": \"ROW-8IJbxxCgfo\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-SHmED0WqsQ\": {\"children\": [\"CHART-7WjGvrkwzG\", \"CHART-Njfu8-pQet\", \"CHART-Cw1AvID4c7\"], \"id\": \"ROW-SHmED0WqsQ\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}}",
+                "slices": [
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "warehouse.Sales by month",
+                            "datasource_type": "table",
+                            "id": 1,
+                            "params": "{\"adhoc_filters\": [], \"all_columns\": [\"first_day_of_month\", \"totalamount\"], \"color_pn\": true, \"datasource\": \"3__table\", \"extra_form_data\": {}, \"granularity_sqla\": \"first_day_of_month\", \"groupby\": [], \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"percent_metrics\": [], \"query_mode\": \"raw\", \"row_limit\": 1000, \"server_page_length\": 10, \"show_cell_bars\": true, \"table_timestamp_format\": \"smart_date\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"viz_type\": \"table\", \"remote_id\": 1, \"datasource_name\": \"Sales by month\", \"schema\": \"dev\", \"database_name\": \"DW\", \"import_time\": 1681681018}",
+                            "query_context": "{\"datasource\":{\"id\":3,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"first_day_of_month\",\"filters\":[],\"extras\":{\"time_grain_sqla\":\"P1D\",\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"first_day_of_month\",\"totalamount\"],\"orderby\":[],\"annotation_layers\":[],\"row_limit\":1000,\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Sales by month",
+                            "viz_type": "table"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "warehouse.Average order",
+                            "datasource_type": "table",
+                            "id": 2,
+                            "params": "{\"adhoc_filters\": [], \"datasource\": \"4__table\", \"extra_form_data\": {}, \"header_font_size\": 0.4, \"header_timestamp_format\": \"%d-%m-%Y %H:%M:%S\", \"metric\": {\"aggregate\": \"SUM\", \"column\": {\"certification_details\": null, \"certified_by\": null, \"column_name\": \"average_order\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 10, \"is_certified\": false, \"is_dttm\": false, \"python_date_format\": null, \"type\": null, \"type_generic\": null, \"verbose_name\": null, \"warning_markdown\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"SUM(average_order)\", \"optionName\": \"metric_1jhxfu3u9h5_r16wyt398om\", \"sqlExpression\": null}, \"subheader_font_size\": 0.15, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"big_number_total\", \"y_axis_format\": \"SMART_NUMBER\", \"remote_id\": 2, \"datasource_name\": \"Average order\", \"schema\": \"dev\", \"database_name\": \"DW\", \"import_time\": 1681681018}",
+                            "query_context": "{\"datasource\":{\"id\":4,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"filters\":[],\"extras\":{\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":10,\"column_name\":\"average_order\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":null,\"type_generic\":null,\"python_date_format\":null,\"is_certified\":false,\"certified_by\":null,\"certification_details\":null,\"warning_markdown\":null},\"aggregate\":\"SUM\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"SUM(average_order)\",\"optionName\":\"metric_1jhxfu3u9h5_r16wyt398om\"}],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{}}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Average order size $USD",
+                            "viz_type": "big_number_total"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "dev.Channel sales evolution",
+                            "datasource_type": "table",
+                            "id": 3,
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"color_scheme\": \"supersetColors\", \"comparison_type\": \"values\", \"datasource\": \"6__table\", \"extra_form_data\": {}, \"forecastInterval\": 0.8, \"forecastPeriods\": 10, \"granularity_sqla\": \"first_day_of_month\", \"groupby\": [\"channel_name\"], \"legendOrientation\": \"top\", \"legendType\": \"scroll\", \"markerSize\": 6, \"metrics\": [{\"aggregate\": \"SUM\", \"column\": {\"certification_details\": null, \"certified_by\": null, \"column_name\": \"total_sales\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 15, \"is_certified\": false, \"is_dttm\": false, \"python_date_format\": null, \"type\": null, \"type_generic\": null, \"verbose_name\": null, \"warning_markdown\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"SUM(total_sales)\", \"optionName\": \"metric_j6mveveltk_0mhj85gicg2\", \"sqlExpression\": null}], \"only_total\": true, \"order_desc\": true, \"rich_tooltip\": true, \"row_limit\": 10000, \"time_grain_sqla\": \"P1D\", \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"tooltipTimeFormat\": \"smart_date\", \"truncateYAxis\": true, \"url_params\": {}, \"viz_type\": \"echarts_timeseries_line\", \"x_axis_time_format\": \"smart_date\", \"x_axis_title_margin\": 15, \"y_axis_bounds\": [null, null], \"y_axis_format\": \"SMART_NUMBER\", \"y_axis_title_margin\": 15, \"y_axis_title_position\": \"Left\", \"remote_id\": 3, \"datasource_name\": \"Channel sales evolution\", \"schema\": \"dev\", \"database_name\": \"DW\", \"import_time\": 1681681018}",
+                            "query_context": "{\"datasource\":{\"id\":6,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"first_day_of_month\",\"filters\":[],\"extras\":{\"time_grain_sqla\":\"P1D\",\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"channel_name\"],\"metrics\":[{\"aggregate\":\"SUM\",\"column\":{\"certification_details\":null,\"certified_by\":null,\"column_name\":\"total_sales\",\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"id\":15,\"is_certified\":false,\"is_dttm\":false,\"python_date_format\":null,\"type\":null,\"type_generic\":null,\"verbose_name\":null,\"warning_markdown\":null},\"expressionType\":\"SIMPLE\",\"hasCustomLabel\":false,\"isNew\":false,\"label\":\"SUM(total_sales)\",\"optionName\":\"metric_j6mveveltk_0mhj85gicg2\",\"sqlExpression\":null}],\"orderby\":[[{\"aggregate\":\"SUM\",\"column\":{\"certification_details\":null,\"certified_by\":null,\"column_name\":\"total_sales\",\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"id\":15,\"is_certified\":false,\"is_dttm\":false,\"python_date_format\":null,\"type\":null,\"type_generic\":null,\"verbose_name\":null,\"warning_markdown\":null},\"expressionType\":\"SIMPLE\",\"hasCustomLabel\":false,\"isNew\":false,\"label\":\"SUM(total_sales)\",\"optionName\":\"metric_j6mveveltk_0mhj85gicg2\",\"sqlExpression\":null},false]],\"annotation_layers\":[],\"row_limit\":10000,\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"is_timeseries\":true,\"time_offsets\":[],\"post_processing\":[null,null,null,{\"operation\":\"pivot\",\"options\":{\"index\":[\"__timestamp\"],\"columns\":[\"channel_name\"],\"aggregates\":{\"SUM(total_sales)\":{\"operator\":\"mean\"}},\"drop_missing_columns\":false}},null,null,null]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Channel sales evolution",
+                            "viz_type": "echarts_timeseries_line"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "dev.Sales per country",
+                            "datasource_type": "table",
+                            "id": 4,
+                            "params": "{\"adhoc_filters\": [], \"color_picker\": {\"a\": 1, \"b\": 135, \"g\": 122, \"r\": 0}, \"country_fieldtype\": \"name\", \"datasource\": \"2__table\", \"entity\": \"country_name\", \"extra_form_data\": {}, \"linear_color_scheme\": \"oranges\", \"max_bubble_size\": \"25\", \"metric\": {\"aggregate\": \"SUM\", \"column\": {\"certification_details\": null, \"certified_by\": null, \"column_name\": \"totalamount\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 6, \"is_certified\": false, \"is_dttm\": false, \"python_date_format\": null, \"type\": null, \"type_generic\": null, \"verbose_name\": null, \"warning_markdown\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"SUM(totalamount)\", \"optionName\": \"metric_6sxvrtnf03p_8wl5327z105\", \"sqlExpression\": null}, \"row_limit\": 10000, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"world_map\", \"remote_id\": 4, \"datasource_name\": \"Sales per country\", \"schema\": \"dev\", \"database_name\": \"DW\", \"import_time\": 1681681018}",
+                            "query_context": "{\"datasource\":{\"id\":2,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"filters\":[],\"extras\":{\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[],\"metrics\":[{\"aggregate\":\"SUM\",\"column\":{\"certification_details\":null,\"certified_by\":null,\"column_name\":\"totalamount\",\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"id\":6,\"is_certified\":false,\"is_dttm\":false,\"python_date_format\":null,\"type\":null,\"type_generic\":null,\"verbose_name\":null,\"warning_markdown\":null},\"expressionType\":\"SIMPLE\",\"hasCustomLabel\":false,\"isNew\":false,\"label\":\"SUM(totalamount)\",\"optionName\":\"metric_6sxvrtnf03p_8wl5327z105\",\"sqlExpression\":null}],\"annotation_layers\":[],\"row_limit\":10000,\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{}}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Sales per country",
+                            "viz_type": "world_map"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "dev.Weekday trends",
+                            "datasource_type": "table",
+                            "id": 5,
+                            "params": "{\"adhoc_filters\": [], \"columns\": [\"day_of_week\"], \"datasource\": \"4__table\", \"date_format\": \"smart_date\", \"extra_form_data\": {}, \"groupby\": [\"city_name\"], \"metrics\": [{\"aggregate\": \"SUM\", \"column\": {\"certification_details\": null, \"certified_by\": null, \"column_name\": \"total_qty\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 18, \"is_certified\": false, \"is_dttm\": false, \"python_date_format\": null, \"type\": null, \"type_generic\": null, \"verbose_name\": null, \"warning_markdown\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"SUM(total_qty)\", \"optionName\": \"metric_kqgyjhyljm_aou68e3odim\", \"sqlExpression\": null}], \"number_format\": \"SMART_NUMBER\", \"order_desc\": true, \"pandas_aggfunc\": \"sum\", \"pivot_margins\": false, \"row_limit\": 1000, \"time_grain_sqla\": \"P1D\", \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"pivot_table\", \"remote_id\": 5, \"datasource_name\": \"Weekday trends\", \"schema\": \"dev\", \"database_name\": \"DW\", \"import_time\": 1681681018}",
+                            "query_context": "{\"datasource\":{\"id\":4,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"filters\":[],\"extras\":{\"time_grain_sqla\":\"P1D\",\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"city_name\",\"day_of_week\"],\"metrics\":[{\"aggregate\":\"SUM\",\"column\":{\"certification_details\":null,\"certified_by\":null,\"column_name\":\"total_qty\",\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"id\":18,\"is_certified\":false,\"is_dttm\":false,\"python_date_format\":null,\"type\":null,\"type_generic\":null,\"verbose_name\":null,\"warning_markdown\":null},\"expressionType\":\"SIMPLE\",\"hasCustomLabel\":false,\"isNew\":false,\"label\":\"SUM(total_qty)\",\"optionName\":\"metric_kqgyjhyljm_aou68e3odim\",\"sqlExpression\":null}],\"annotation_layers\":[],\"row_limit\":1000,\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{}}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Day of Week Trends",
+                            "viz_type": "pivot_table"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "dev.Comissions Paid",
+                            "datasource_type": "table",
+                            "id": 6,
+                            "params": "{\"adhoc_filters\": [], \"columns\": [\"year\"], \"datasource\": \"7__table\", \"date_format\": \"smart_date\", \"extra_form_data\": {}, \"groupby\": [\"reseller_name\"], \"metrics\": [{\"aggregate\": \"SUM\", \"column\": {\"certification_details\": null, \"certified_by\": null, \"column_name\": \"comissionpaid\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 20, \"is_certified\": false, \"is_dttm\": false, \"python_date_format\": null, \"type\": null, \"type_generic\": null, \"verbose_name\": null, \"warning_markdown\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"SUM(comissionpaid)\", \"optionName\": \"metric_drpmvv73cqr_crmgdlpeoig\", \"sqlExpression\": null}], \"number_format\": \"SMART_NUMBER\", \"order_desc\": true, \"pandas_aggfunc\": \"sum\", \"pivot_margins\": false, \"row_limit\": 10000, \"time_grain_sqla\": \"P1D\", \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"pivot_table\", \"remote_id\": 6, \"datasource_name\": \"Comissions Paid\", \"schema\": \"dev\", \"database_name\": \"DW\", \"import_time\": 1681681018}",
+                            "query_context": "{\"datasource\":{\"id\":7,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"filters\":[],\"extras\":{\"time_grain_sqla\":\"P1D\",\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"reseller_name\",\"year\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":20,\"column_name\":\"comissionpaid\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":null,\"type_generic\":null,\"python_date_format\":null,\"is_certified\":false,\"certified_by\":null,\"certification_details\":null,\"warning_markdown\":null},\"aggregate\":\"SUM\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"SUM(comissionpaid)\",\"optionName\":\"metric_drpmvv73cqr_crmgdlpeoig\"}],\"annotation_layers\":[],\"row_limit\":10000,\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{}}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Commission paid",
+                            "viz_type": "pivot_table"
+                        }
+                    }
+                ],
+                "slug": null
+            }
+        }
+    ],
+    "datasources": [
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "average_order",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 8,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 4,
+                            "type": null,
+                            "uuid": "91584028-5c17-46ed-aa8d-a9020bc69a4f",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "extra": "{\"warning_markdown\":\"\"}",
+                            "id": 4,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 4,
+                            "uuid": "73224143-2daa-4d9a-aeba-9181bf2e241b",
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 4, \"database_name\": \"DW\"}",
+                "schema": "dev",
+                "sql": "-- Note: Unless you save your query, these tabs will NOT persist if you clear your cookies or change browsers.\n\nSELECT avg(s.total_amount::numeric ) as average_order\nfrom postcard_company_core.fact_sales s\n",
+                "table_name": "Average order",
+                "template_params": null
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "first_day_of_month",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 3,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 2,
+                            "type": "DATETIME",
+                            "uuid": "a0e8a8d9-e385-4cae-8223-23c40acfbb70",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "totalamount",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 4,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 2,
+                            "type": null,
+                            "uuid": "dd3003aa-2584-4b8c-b70c-9d6ce7899efa",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "extra": "{\"warning_markdown\":\"\"}",
+                            "id": 2,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 2,
+                            "uuid": "224bbaec-3ede-48ca-b262-0bbda7e8100d",
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 2, \"database_name\": \"DW\"}",
+                "schema": "dev",
+                "sql": "-- Note: Unless you save your query, these tabs will NOT persist if you clear your cookies or change browsers.\n\nSELECT d.first_day_of_month , sum(s.total_amount) as totalamount  \nfrom postcard_company_core.fact_sales s\njoin postcard_company_core.dim_date d on s.bought_date_key  = d.date_key \n\ngroup by d.first_day_of_month",
+                "table_name": "Sales by month",
+                "template_params": null
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2023-04-17T09:05:02"
+                            },
+                            "column_name": "first_day_of_month",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 5,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 3,
+                            "type": "DATETIME",
+                            "uuid": "3e3e4571-e60a-4559-b954-4fa9b54fdc76",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2023-04-17T09:05:02"
+                            },
+                            "column_name": "total_sales",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 6,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 3,
+                            "type": null,
+                            "uuid": "f41e123b-d791-410c-8a56-c422f477fde0",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "channel_name",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 7,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 3,
+                            "type": "STRING",
+                            "uuid": "9b7321a7-a815-451a-8edb-dbdc7dd72f4d",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "extra": "{\"warning_markdown\":\"\"}",
+                            "id": 3,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 3,
+                            "uuid": "cf5f3be4-ffe2-4249-9620-6ae220fb599e",
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 3, \"database_name\": \"DW\"}",
+                "schema": "dev",
+                "sql": "-- Note: Unless you save your query, these tabs will NOT persist if you clear your cookies or change browsers.\n\nSELECT  c.channel_name , d.first_day_of_month, sum(s.total_amount ) as total_sales\nfrom postcard_company_core.fact_sales s\njoin postcard_company_core.dim_channel c on s.channel_key   = c.channel_key  \njoin postcard_company_core.dim_date d on d.date_key= s.bought_date_key\ngroup by c.channel_name , d.first_day_of_month",
+                "table_name": "Channel sales evolution",
+                "template_params": null
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "day_of_week",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 9,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 5,
+                            "type": null,
+                            "uuid": "8fa75e5b-40b7-4641-9b15-c4a89056e668",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "total_qty",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 10,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 5,
+                            "type": null,
+                            "uuid": "b7e42425-b241-4093-9642-88414f8ab926",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "city_name",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 11,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 5,
+                            "type": "STRING",
+                            "uuid": "172f60a7-1e3e-4433-8184-745f34fe7d2c",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "extra": "{\"warning_markdown\":\"\"}",
+                            "id": 5,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 5,
+                            "uuid": "e21ac2cc-8cd3-4142-9d6d-3408f47ff210",
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 5, \"database_name\": \"DW\"}",
+                "schema": "dev",
+                "sql": "-- Note: Unless you save your query, these tabs will NOT persist if you clear your cookies or change browsers.\n\nSELECT  g.city_name  , d.day_of_week   , sum(s.qty::numeric) as total_qty\nfrom postcard_company_core.fact_sales s\njoin postcard_company_core.dim_geography g on g.geography_key  = s.geography_key \njoin postcard_company_core.dim_date d on d.date_key = s.bought_date_key \n\ngroup by g.city_name  , d.day_of_week \n",
+                "table_name": "Weekday trends",
+                "template_params": null
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "reseller_name",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 12,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 6,
+                            "type": "STRING",
+                            "uuid": "4a64488c-6c42-486a-bccc-acc79a8fb480",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "year",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 13,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 6,
+                            "type": "INT",
+                            "uuid": "0a99423c-e4b5-498b-a60e-24bf4af3cdc1",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "comissionpaid",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 14,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 6,
+                            "type": null,
+                            "uuid": "5a467e3f-b2e1-4fee-b3a3-ad0ee4b4e2a1",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "extra": "{\"warning_markdown\":\"\"}",
+                            "id": 6,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 6,
+                            "uuid": "f74c2d3b-d045-46f3-a8ff-eb5cd25e0b0e",
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 6, \"database_name\": \"DW\"}",
+                "schema": "dev",
+                "sql": "select reseller_name, bought_date_key/10000 as year, sum(commissionpaid::numeric) as comissionpaid \n\n\nfrom postcard_company_core.fact_sales s\n\njoin postcard_company_core.dim_salesagent  sa on sa.sales_agent_key = s.reseller_id\n\ngroup by reseller_name, bought_date_key/10000\n\nhaving sa.reseller_name <> 'Direct Sales'",
+                "table_name": "Comissions Paid",
+                "template_params": null
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "totalamount",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 1,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 1,
+                            "type": null,
+                            "uuid": "afe65ce7-9497-4681-a19a-d3c71a1a9827",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "advanced_data_type": null,
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "column_name": "country_name",
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "extra": "{}",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 2,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 1,
+                            "type": "STRING",
+                            "uuid": "da8ee029-689f-43f8-8adf-835d4743b4c2",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": null,
+                            "changed_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "created_by_fk": null,
+                            "created_on": {
+                                "__datetime__": "2023-04-16T21:36:58"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "extra": "{\"warning_markdown\":\"\"}",
+                            "id": 1,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 1,
+                            "uuid": "83eddfd6-e7d8-4ffe-ae3f-fad05fdb2dd2",
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 1, \"database_name\": \"DW\"}",
+                "schema": "dev",
+                "sql": "-- Note: Unless you save your query, these tabs will NOT persist if you clear your cookies or change browsers.\n\nSELECT g.country_name, sum(s.total_amount) as totalamount\n\nfrom postcard_company_core.fact_sales s \njoin postcard_company_core.dim_geography g on s.geography_key  = g.geography_key \n\ngroup by g.country_name",
+                "table_name": "Sales per country",
+                "template_params": null
+            }
+        }
+    ]
+}
