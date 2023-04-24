@@ -1,8 +1,8 @@
 .venv
 *.egg-info/
-**/shared/csv/*
-**/shared/json/*
-**/shared/db/*
+*.csv
+*.json
+*.db
 tmp*
 __pycache__
 target/
@@ -16,3 +16,7 @@ logs/
 **/history
 **/schedules
 **/storage
+
+# Keeps
+!geography.csv
+!dashboard.json
