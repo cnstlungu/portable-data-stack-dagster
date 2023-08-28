@@ -7,9 +7,9 @@ ARG POSTGRES_PASSWORD
 # Switching to root to install the required packages
 USER root
 COPY --chown=superset:superset ./superset/assets .
-RUN pip install psycopg2-binary
-RUN pip install duckdb-engine
-RUN pip install duckdb
+RUN pip install psycopg2-binary==2.9.1
+RUN pip install duckdb-engine==0.9.2
+RUN pip install duckdb==0.8.1
 USER superset
 RUN superset fab create-admin \
               --username ${SUPERSET_ADMIN} \

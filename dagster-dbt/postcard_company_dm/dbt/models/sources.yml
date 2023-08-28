@@ -11,7 +11,7 @@ sources:
       - name: sales
   - name: reseller_json
     meta:
-      external_location: "read_json('/shared/json/rawDailySales_*.json', auto_detect=True, json_format=array_of_records)"
+      external_location: "read_json('/shared/json/rawDailySales_*.json', auto_detect=True, format='array')"
     tables:
       - name: sales
   - name: oltp
