@@ -23,9 +23,7 @@ This application is an Analytics suite suite for an imaginary company selling po
 
 3. With **Docker engine** and **Docker-Compose** installed, change directory to the root folder of the project (also the one that contains docker-compose.yml) and run
 
-`
-docker-compose up --build
-`
+    `docker-compose up --build`
 
 ### Demo Credentials
 
