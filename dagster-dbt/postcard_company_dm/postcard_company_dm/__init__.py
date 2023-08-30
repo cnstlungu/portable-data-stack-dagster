@@ -2,8 +2,6 @@ import os
 
 from dagster_dbt import dbt_cli_resource, dbt_test_op, load_assets_from_dbt_project
 
-from dagster_duckdb_polars import duckdb_polars_io_manager
-
 from dagster import Definitions, file_relative_path
 from dagster import job
 
@@ -19,9 +17,7 @@ dbt_resource = dbt_cli_resource.configured(
     )
 
 model_resources = {
-    "dbt": dbt_resource,
-    "io_manager": duckdb_polars_io_manager.configured(
-        {"database": "/shared/db/datamart.duckdb"})
+    "dbt": dbt_resource
 }
 
 
