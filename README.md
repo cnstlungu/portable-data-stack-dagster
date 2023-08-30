@@ -29,7 +29,7 @@ This application is an Analytics suite suite for an imaginary company selling po
 
 ![Dagit](resources/dagit.png "Dagit")
 
-5. When the assets have been materialized, you can open the [Superset interface](`http://localhost:8088`)
+5. When the assets have been materialized, you can open the [Superset interface](http://localhost:8088)
 
 
 ### Demo Credentials
