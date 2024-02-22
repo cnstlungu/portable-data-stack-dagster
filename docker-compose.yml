@@ -54,6 +54,9 @@ services:
         POSTGRES_PASSWORD: $POSTGRES_PASSWORD
         SUPERSET_ADMIN: $SUPERSET_ADMIN
         SUPERSET_PASSWORD: $SUPERSET_PASSWORD
+        SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY}
+    environment:
+      SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY}
     ports:
         - "8088:8088"
     command:     gunicorn --bind  "0.0.0.0:8088" --access-logfile '-' --error-logfile '-' --workers 1 --worker-class gthread --threads 20 --timeout 60 --limit-request-line 0 --limit-request-field_size 0 "superset.app:create_app()"
