@@ -25,10 +25,10 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
 RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
-    git clone --depth 1 --branch v0.9.2 https://github.com/duckdb/duckdb && \
+    git clone --depth 1 --branch v0.10.0 https://github.com/duckdb/duckdb && \
     cd duckdb/tools/pythonpkg && python -m pip install . ; \
     elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-    pip install duckdb==0.9.2; \
+    pip install duckdb==0.10.0; \
     fi
 
 FROM python:3.11-slim AS build-image
