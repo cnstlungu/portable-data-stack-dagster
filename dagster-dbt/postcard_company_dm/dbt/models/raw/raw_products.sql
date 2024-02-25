@@ -1,2 +1,9 @@
 {{ config(schema='raw') }}
-SELECT *, CURRENT_TIMESTAMP AS loaded_timestamp FROM {{ source('oltp','products') }}
+
+SELECT 
+    product_id,
+    name,
+    city,
+    price,
+    CURRENT_TIMESTAMP AS loaded_timestamp 
+FROM {{ source('oltp','products') }}

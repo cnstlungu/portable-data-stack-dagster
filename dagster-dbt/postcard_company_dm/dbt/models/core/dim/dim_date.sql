@@ -1,4 +1,4 @@
--- https://gist.github.com/adityawarmanfw/0612333605d351f2f1fe5c87e1af20d2
+-- Source: https://gist.github.com/adityawarmanfw/0612333605d351f2f1fe5c87e1af20d2
 
 {{ config(
       materialized = 'table',
@@ -6,7 +6,7 @@
       schema = 'core'
 ) }}
 
-WITH generate_date AS (
+WITH generate_dates AS (
         SELECT CAST(RANGE AS DATE) AS date_value 
           FROM RANGE(DATE '2015-01-01', DATE '2030-12-31', INTERVAL 1 DAY)
           )
@@ -40,4 +40,5 @@ WITH generate_date AS (
           DATE_TRUNC('Year', date_value) AS first_day_of_year,
           DATE_TRUNC('Year', date_value) - 1 + INTERVAL 1 YEAR AS last_day_of_year,
           ROW_NUMBER() OVER (PARTITION BY YEAR(date_value), MONTH(date_value), DAYOFWEEK(date_value) ORDER BY date_value) AS ordinal_weekday_of_month
-     FROM generate_date
+FROM 
+      generate_dates
