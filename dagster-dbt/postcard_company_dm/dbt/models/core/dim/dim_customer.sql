@@ -6,5 +6,11 @@ schema = 'core'
 )
 }}
 
-select customer_key, customer_first_name, customer_last_name, customer_email, sales_agent_key
-from {{ref('staging_customers')}}
+SELECT 
+    customer_key, 
+    customer_first_name, 
+    customer_last_name, 
+    customer_email, 
+    sales_agent_key
+FROM 
+    {{ref('staging_customers')}}
