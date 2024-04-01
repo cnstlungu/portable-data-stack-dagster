@@ -10,6 +10,12 @@ This application is an Analytics suite suite for an imaginary company selling po
 - dbt core
 - Superset
 
+## For other orchestration options, check the below:
+
+- [portable-data-stack-mage](https://github.com/cnstlungu/portable-data-stack-mage)
+- [portable-data-stack-airflow](https://github.com/cnstlungu/portable-data-stack-airflow)
+
+
 
 ### System requirements
 * [Docker](https://docs.docker.com/engine/install/)
