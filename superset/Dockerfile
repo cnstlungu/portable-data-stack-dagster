@@ -1,4 +1,4 @@
-FROM apache/superset:3.0.4 
+FROM apache/superset:3.1.3 
 
 ARG SUPERSET_ADMIN
 ARG SUPERSET_PASSWORD
@@ -9,8 +9,8 @@ ARG SUPERSET_SECRET_KEY
 USER root
 COPY --chown=superset:superset ./superset/assets .
 RUN pip install psycopg2-binary==2.9.9
-RUN pip install duckdb-engine==0.11.1
-RUN pip install duckdb==0.10.0
+RUN pip install duckdb-engine==0.13.0
+RUN pip install duckdb==1.0.0
 USER superset
 RUN superset fab create-admin \
               --username ${SUPERSET_ADMIN} \
