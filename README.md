@@ -5,7 +5,7 @@ This application is an Analytics suite suite for an imaginary company selling po
 ## Stack
 
 - Dagster
-- Docker & Docker-Compose
+- Docker (Docker Compose)
 - DuckDB
 - dbt core
 - Superset
@@ -19,7 +19,6 @@ This application is an Analytics suite suite for an imaginary company selling po
 
 ### System requirements
 * [Docker](https://docs.docker.com/engine/install/)
-* [Docker-Compose](https://docs.docker.com/compose/install/)
 
 ## Setup
 
@@ -27,9 +26,9 @@ This application is an Analytics suite suite for an imaginary company selling po
 
 2. Rename `shared/db/datamart.duckdb.example` to `shared/db/datamart.duckdb` or init an empty database file there with that name.
 
-3. With **Docker engine** and **Docker-Compose** installed, change directory to the root folder of the project (also the one that contains docker-compose.yml) and run
+3. With **Docker Engine** installed, change directory to the root folder of the project (also the one that contains docker-compose.yml) and run
 
-    `docker-compose up --build`
+    `docker compose up --build`
 
 4. Once the Docker suite has finished loading, open up [Dagster (dagit)](http://localhost:3000) , go to `Assets`, select all and click `Materialize selected`
 
@@ -67,13 +66,13 @@ For superset, the default credentials are: user = admin, password = admin
 
 ## Overview of architecture
 
-The docker-compose process will begin building the application suite. The suite is made up of the following components, each within its own docker container:
+The Docker process will begin building the application suite. The suite is made up of the following components, each within its own docker container:
 * **generator**: this is a collection of Python scripts that will generate, insert and export the example data
 * **oltp**: this is the PostgreSQL instance that will simulate our transactional database (**sales_oltp**), serving as one of the sources of the data; this is locally available on the host machine exposed on port 54320.
 * **dagster_dbt**: this is the orchestrator tool that will trigger the ETL tasks; its GUI is locally available on port 3000; 
 * **superset**: this contains the web-based Business Intelligence application we will use to explore the data; exposed on port 8088.
 
-Once the docker-compose building process has completed, we may open the Dagster (dagit) GUI (locally: localhost:3000) to view the orchestration of our tasks.
+Once the Docker building process has completed, we may open the Dagster (dagit) GUI (locally: localhost:3000) to view the orchestration of our tasks.
 
 
 
