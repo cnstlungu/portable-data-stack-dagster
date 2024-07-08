@@ -6,9 +6,13 @@ RUN apt-get install -y --no-install-recommends \
     git \
     g++ \
     cmake \
-    libssl-dev
+    libssl-dev \
+    wget
 
 RUN python -m venv /opt/venv
+
+ADD --chmod=755 https://astral.sh/uv/install.sh /install.sh
+RUN /install.sh && rm /install.sh
 
 # Make sure we use the virtualenv:
 ENV PATH="/opt/venv/bin:$PATH"
@@ -26,12 +30,19 @@ RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
 
 RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
     git clone --depth 1 --branch v0.10.0 https://github.com/duckdb/duckdb && \
-    cd duckdb/tools/pythonpkg && python -m pip install . ; \
+    cd duckdb/tools/pythonpkg && /root/.cargo/bin/uv pip install --system . ; \
     elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-    pip install duckdb==0.10.0; \
+    /root/.cargo/bin/uv pip install --system duckdb==0.10.0; \
     fi
 
 FROM python:3.11-slim AS build-image
+
+RUN apt-get update
+
+RUN apt-get install -y --no-install-recommends curl
+
+ADD --chmod=755 https://astral.sh/uv/install.sh /install.sh
+RUN /install.sh && rm /install.sh
 
 COPY --from=compile-image /opt/venv /opt/venv
 
@@ -42,7 +53,7 @@ COPY dagster-dbt dagster-dbt
 
 WORKDIR /dagster-dbt
 
-RUN pip install -e ".[dev]"
+RUN /root/.cargo/bin/uv pip install --system -e ".[dev]"
 
 WORKDIR /dagster-dbt/postcard_company_dm/dbt
 
