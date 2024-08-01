@@ -16,6 +16,6 @@ WORKDIR /home/generator
 
 COPY generator .
 
-RUN /root/.cargo/bin/uv pip install --system --no-cache pip install -r requirements.txt
+RUN /root/.cargo/bin/uv pip install --system --no-cache -r requirements.txt
 
 CMD ["python", "generate.py"]
