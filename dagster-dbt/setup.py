@@ -9,7 +9,8 @@ setup(
         "duckdb==1.0.0",
         "dbt-core==1.8.2",
         "dbt-duckdb==1.8.1",
-        "dagster-duckdb==0.23.9"
+        "dagster-duckdb==0.23.9",
+        "pydantic<2.9.0"
     ],
     extras_require={"dev": ["dagit", "pytest"]},
 )
