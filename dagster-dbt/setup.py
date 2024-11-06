@@ -6,9 +6,9 @@ setup(
     install_requires=[
         "dagster==1.7.9",
         "dagster-dbt==0.23.9",
-        "duckdb==1.0.0",
-        "dbt-core==1.8.2",
-        "dbt-duckdb==1.8.1",
+        "duckdb==1.1.2",
+        "dbt-core==1.8.8",
+        "dbt-duckdb==1.9.0",
         "dagster-duckdb==0.23.9",
         "pydantic<2.9.0"
     ],
