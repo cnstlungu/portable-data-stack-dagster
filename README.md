@@ -30,6 +30,8 @@ This application is an Analytics suite suite for an imaginary company selling po
 
     `docker compose up --build`
 
+    Note that this may take several minutes to completed. Check out the console to see when the Dagster interface is ready.
+
 4. Once the Docker suite has finished loading, open up [Dagster (dagit)](http://localhost:3000) , go to `Assets`, select all and click `Materialize selected`
 
 ![Dagit](resources/dagit.png "Dagit")
