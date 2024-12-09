@@ -1,59 +1,42 @@
-FROM python:3.11-slim AS compile-image
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends \
-    git \
-    g++ \
-    cmake \
-    libssl-dev \
-    wget
-
-RUN python -m venv /opt/venv
-
-RUN pip install uv
-# Make sure we use the virtualenv:
-ENV PATH="/opt/venv/bin:$PATH"
-
-# duckdb
-# we need to compile duckdb ourselves because duckdb doesnt provide
-# binary extensions for 'httpfs' in platform: linux_arm64_gcc4
-# this means duckdb is not working to query remote files in
-# both Mac M1 (only under docker) and Linux ARM (only under docker)
-# Note: without docker, duckdb extensions autoload mechanism works.
-# More info at:
-# https://github.com/duckdb/duckdb/issues/8035
-
-RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM"
-
-RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
-    git clone --depth 1 --branch v0.10.0 https://github.com/duckdb/duckdb && \
-    cd duckdb/tools/pythonpkg && uv pip install --system . ; \
-    elif [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-    uv pip install --system duckdb==0.10.0; \
-    fi
-
-FROM python:3.11-slim AS build-image
+FROM python:3.11-slim
 
 RUN apt-get update
 
 RUN apt-get install -y --no-install-recommends curl
 
-RUN pip install uv
+RUN apt-get install -y git make automake gcc g++ subversion
 
-COPY --from=compile-image /opt/venv /opt/venv
+RUN pip install uv 
 
-# Make sure we use the virtualenv:
-ENV PATH="/opt/venv/bin:$PATH"
+RUN git clone -n --depth=1 --filter=tree:0 https://github.com/cnstlungu/postcard-company-datamart.git /dbt_project
 
-COPY dagster-dbt dagster-dbt
+WORKDIR /dbt_project
 
-WORKDIR /dagster-dbt
+RUN git sparse-checkout set --no-cone postcard_company
 
-RUN uv pip install --system -e ".[dev]"
+RUN git checkout
 
-WORKDIR /dagster-dbt/postcard_company_dm/dbt
+WORKDIR /dbt_project/postcard_company
 
-RUN dbt deps
+RUN uv pip install --system dagster==1.9.4 \
+    dagster-dbt==0.25.4 \
+    duckdb==1.1.2 \
+    dbt-core==1.8.8 \
+    dbt-duckdb==1.9.0 \
+    dagster-duckdb==0.25.4 \
+    dagster-webserver==1.9.4 \
+    "pydantic<2.9.0" \
+    "watchdog<5"
 
-WORKDIR /dagster-dbt/postcard_company_dm
+RUN dagster-dbt project scaffold --project-name postcard_company_dm
+
+RUN echo '#!/bin/bash\n\
+
+dbt deps\n\
+dbt seed\n\
+dbt compile\n\
+cd /dbt_project/postcard_company/postcard_company_dm\n\
+exec dagster-webserver -h 0.0.0.0\n\
+' > /entrypoint.sh && chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

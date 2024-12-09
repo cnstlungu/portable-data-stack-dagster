@@ -1,7 +1,6 @@
 .venv
 *.egg-info/
-*.csv
-*.json
+*.parquet
 *.db
 tmp*
 __pycache__
@@ -16,6 +15,7 @@ logs/
 **/history
 **/schedules
 **/storage
+**/dbt_project/*
 
 # Keeps
 !geography.csv
