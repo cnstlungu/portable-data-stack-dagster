@@ -10,6 +10,10 @@ This application is an Analytics suite suite for an imaginary company selling po
 - dbt core
 - Superset
 
+## Interested in the data model?
+
+Generation of example data and the underlying dbt-core model is available in the [postcard-company-datamart](https://github.com/cnstlungu/postcard-company-datamart) project
+
 ## For other stacks, check the below:
 
 - [portable-data-stack-mage](https://github.com/cnstlungu/portable-data-stack-mage)
@@ -46,16 +50,15 @@ Demo credentials are set in the .env file mentioned above.
 ### Ports exposed locally
 * Dagster (dagit): 3000
 * Superset: 8088
-* PosgreSQL OLTP Database instance: 54320
 
-Generated flat files (JSON, CSV) are saved in the **shared** folder.
+Generated parquet files are saved in the **shared** folder.
 
 The data is fictional and automatically generated. Any similarities with existing persons, entities, products or businesses are purely coincidental.
 
 ### General flow
 
-1. Generate test data (flat files + OLTP data) using Python
-2. Import flat file data and OLTP data to staging area in the Data Warehouse (DuckDB), orchestrated by Dagster
+1. Generate test data as parquet files using Python
+2. Import data to the staging area in the Data Warehouse (DuckDB), orchestrated by Dagster
 3. Model data, build fact and dimension tables, load the Data Warehouse using dbt
     - installs dbt dependencies
     - seeds the database with static data (e.g. geography)
@@ -70,8 +73,8 @@ For superset, the default credentials are: user = admin, password = admin
 
 The Docker process will begin building the application suite. The suite is made up of the following components, each within its own docker container:
 * **generator**: this is a collection of Python scripts that will generate, insert and export the example data
-* **oltp**: this is the PostgreSQL instance that will simulate our transactional database (**sales_oltp**), serving as one of the sources of the data; this is locally available on the host machine exposed on port 54320.
-* **dagster_dbt**: this is the orchestrator tool that will trigger the ETL tasks; its GUI is locally available on port 3000; 
+* **dbt**: the data model, sourced from [postcard-company-datamart](https://github.com/cnstlungu/postcard-company-datamart) project
+* **dagster**: this is the orchestrator tool that will trigger the ETL tasks; its GUI is locally available on port 3000; 
 * **superset**: this contains the web-based Business Intelligence application we will use to explore the data; exposed on port 8088.
 
 Once the Docker building process has completed, we may open the Dagster (dagit) GUI (locally: localhost:3000) to view the orchestration of our tasks.

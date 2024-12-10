@@ -15,7 +15,7 @@ logs/
 **/history
 **/schedules
 **/storage
-**/dbt_project/*
+dbt/postcard_company/*
 
 # Keeps
 !geography.csv

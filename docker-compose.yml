@@ -7,20 +7,32 @@ services:
       - ./shared:/shared
     environment:
       INPUT_FILES_PATH: /shared/parquet
-  dagster-dbt:
+  dbt:
     build:
       context: .
-      dockerfile: ./dagster-dbt/Dockerfile
+      dockerfile: ./dbt/Dockerfile
+    volumes:
+      - ./shared:/shared
+      - ./dbt/postcard_company:/datamart/postcard_company
+    environment:
+      INPUT_FILES_PATH: /shared/parquet  
+  dagster:
+    build:
+      context: .
+      dockerfile: ./dagster/Dockerfile
     restart: always
     environment:
         DUCKDB_FILE_PATH: /shared/db/datamart.duckdb
         INPUT_FILES_PATH: /shared/parquet
     volumes:
         - ./shared:/shared
+        - ./dbt/postcard_company:/postcard_company
     ports:
         - "3000:3000"
     depends_on:
       generator:
+        condition: service_completed_successfully
+      dbt:
         condition: service_completed_successfully
   superset:
     build:
@@ -40,4 +52,4 @@ services:
     volumes:
         - ./shared/db:/app/superset_home/db
     depends_on:
-      - dagster-dbt
+      - dagster
