@@ -21,6 +21,8 @@ Generation of example data and the underlying dbt-core model is available in the
 - [portable-data-stack-sqlmesh](https://github.com/cnstlungu/portable-data-stack-sqlmesh)
 
 
+For the legacy version involving OLTP, CSV and JSON sources, check out the `legacy-oltp` branch.
+
 ### System requirements
 * [Docker](https://docs.docker.com/engine/install/)
 
