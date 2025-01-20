@@ -24,7 +24,7 @@ RUN echo '#!/bin/bash\n\
     dbt seed\n\
     dbt compile\n\
     cd /postcard_company/postcard_company_dm\n\
-    exec dagster-webserver -h 0.0.0.0\n\
+    exec dagster dev -h 0.0.0.0\n\
     ' > /entrypoint.sh && chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
