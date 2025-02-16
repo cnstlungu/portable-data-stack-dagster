@@ -1,4 +1,4 @@
-FROM apache/superset:3.1.3 
+FROM apache/superset:4.1.1
 
 ARG SUPERSET_ADMIN
 ARG SUPERSET_PASSWORD
@@ -11,7 +11,7 @@ USER root
 RUN pip install uv
 
 COPY --chown=superset:superset ./superset/assets .
-RUN uv pip install --system duckdb-engine==0.13.0 duckdb==1.0.0
+RUN uv pip install --system duckdb-engine==0.13.0 duckdb==1.2.0
 USER superset
 RUN superset fab create-admin \
               --username ${SUPERSET_ADMIN} \
@@ -22,4 +22,3 @@ RUN superset fab create-admin \
 RUN superset db upgrade
 RUN superset init
 RUN superset set_database_uri -d DW  -u duckdb:///superset_home/db/datamart.duckdb
-RUN superset import-dashboards -p ./dashboard.zip -u ${SUPERSET_ADMIN}

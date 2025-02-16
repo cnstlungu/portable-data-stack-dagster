@@ -6,13 +6,13 @@ RUN apt-get install -y --no-install-recommends curl
 
 RUN pip install uv 
 
-RUN uv pip install --system dagster==1.9.4 \
-    dagster-dbt==0.25.4 \
-    duckdb==1.1.2 \
-    dbt-core==1.8.8 \
-    dbt-duckdb==1.9.0 \
-    dagster-duckdb==0.25.4 \
-    dagster-webserver==1.9.4 \
+RUN uv pip install --system dagster==1.9.13 \
+    dagster-dbt==0.25.13 \
+    duckdb==1.2.0 \
+    dbt-core==1.9.2 \
+    dbt-duckdb==1.9.1 \
+    dagster-duckdb==0.25.13 \
+    dagster-webserver==1.9.13 \
     "pydantic<2.9.0" \
     "watchdog<5"
 
