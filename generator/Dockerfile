@@ -1,12 +1,12 @@
 FROM python:3.11
 
-RUN apt-get install git make automake gcc g++ subversion
+RUN apt-get update && apt-get install -y git make automake gcc g++ subversion
 
-RUN git clone -n --depth=1 --filter=tree:0 https://github.com/cnstlungu/postcard-company-datamart.git /generator
+RUN git clone --branch develop --single-branch -n --depth=1 --filter=tree:0 https://github.com/cnstlungu/postcard-company-datamart.git /generator
 
 WORKDIR /generator
 
-RUN git sparse-checkout set --no-cone generator && git checkout
+RUN git sparse-checkout set --no-cone generator && git checkout develop
 
 WORKDIR /generator/generator
 

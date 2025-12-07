@@ -16,14 +16,12 @@ RUN uv pip install --system dagster==1.11.13 \
     "pydantic<2.9.0" \
     "watchdog<5"
 
-WORKDIR /postcard_company
+WORKDIR /
 
-RUN echo '#!/bin/bash\n\
-    dbt deps\n\
-    dbt seed\n\
-    dbt compile\n\
-    cd /postcard_company/postcard_company_dm\n\
-    exec dagster dev -h 0.0.0.0\n\
-    ' > /entrypoint.sh && chmod +x /entrypoint.sh
+COPY dagster/definitions.py /definitions.py
+COPY dagster/entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["-h", "0.0.0.0", "-f", "/definitions.py", "-d", "/postcard_company"]
