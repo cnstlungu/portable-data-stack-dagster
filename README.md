@@ -14,11 +14,14 @@ This application is an Analytics suite suite for an imaginary company selling po
 
 Generation of example data and the underlying dbt-core model is available in the [postcard-company-datamart](https://github.com/cnstlungu/postcard-company-datamart) project
 
-## For other stacks, check the below:
+## For other stacks using the same dbt-core model, check the below:
 
 - [portable-data-stack-mage](https://github.com/cnstlungu/portable-data-stack-mage)
 - [portable-data-stack-airflow](https://github.com/cnstlungu/portable-data-stack-airflow)
 - [portable-data-stack-sqlmesh](https://github.com/cnstlungu/portable-data-stack-sqlmesh)
+
+Implementations with other tools with a different model:
+- [portable-data-stack-bruin](https://github.com/cnstlungu/portable-data-stack-bruin)
 
 
 For the legacy version involving OLTP, CSV and JSON sources, check out the `legacy-oltp` branch.
