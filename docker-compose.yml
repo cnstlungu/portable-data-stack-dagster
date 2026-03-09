@@ -21,6 +21,7 @@ services:
       context: .
       dockerfile: ./dagster/Dockerfile
     restart: always
+    shm_size: '1gb'
     environment:
         DUCKDB_FILE_PATH: /shared/db/datamart.duckdb
         INPUT_FILES_PATH: /shared/parquet

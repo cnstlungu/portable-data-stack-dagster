@@ -11,4 +11,4 @@ dbt compile
 echo "Starting Dagster..."
 
 # Forward CMD arguments to Dagster
-exec dagster dev "$@"w
+exec dagster dev "$@"
