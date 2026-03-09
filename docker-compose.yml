@@ -39,8 +39,6 @@ services:
       context: .
       dockerfile: ./superset/Dockerfile
       args:
-        POSTGRES_USER: $POSTGRES_USER
-        POSTGRES_PASSWORD: $POSTGRES_PASSWORD
         SUPERSET_ADMIN: $SUPERSET_ADMIN
         SUPERSET_PASSWORD: $SUPERSET_PASSWORD
         SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY}

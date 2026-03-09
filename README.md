@@ -1,6 +1,6 @@
 # Portable Data Stack
 
-This application is an Analytics suite suite for an imaginary company selling postcards. The company sells both directly but also through resellers in the majority of European countries.
+This application is an Analytics suite for an imaginary company selling postcards. The company sells both directly but also through resellers in the majority of European countries.
 
 ## Stack
 
@@ -82,14 +82,14 @@ The Docker process will begin building the application suite. The suite is made 
 * **dagster**: this is the orchestrator tool that will trigger the ETL tasks; its GUI is locally available on port 3000; 
 * **superset**: this contains the web-based Business Intelligence application we will use to explore the data; exposed on port 8088.
 
-Once the Docker building process has completed, we may open the Dagster (dagit) GUI (locally: localhost:3000) to view the orchestration of our tasks.
+Once the Docker building process has completed, we may open the Dagster GUI (locally: localhost:3000) to view and materialize our assets.
 
 
 
 ![Dagster](resources/orchestration.png "Orchestration with Dagster")
 
 
-After the DAGs have completed you can either analyze the data using the querying and visualization tools provided by Superset (available locally on port 8088), or query the Data Warehouse (available as a DuckDB Database)
+After the assets have been materialized you can either analyze the data using the querying and visualization tools provided by Superset (available locally on port 8088), or query the Data Warehouse (available as a DuckDB Database)
 
 ![Apache Superset](resources/superset.png "Superset")
 
