@@ -22,4 +22,4 @@ COPY dagster/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["-h", "0.0.0.0", "-f", "/definitions.py", "-d", "/postcard_company"]
+CMD ["-h", "0.0.0.0", "-f", "/definitions.py"]
