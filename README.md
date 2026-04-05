@@ -13,7 +13,6 @@ This application is an Analytics suite for an imaginary company selling postcard
 ## Interested in the data model?
 
 Generation of example data and the underlying dbt-core model is available in the [postcard-company-datamart](https://github.com/cnstlungu/postcard-company-datamart) project
-A Dataform implementation of the same postcard company analytics model is available in the [postcard-company-dataform](https://github.com/cnstlungu/postcard-company-dataform) project.
 
 ## For other stacks using the same dbt-core model, check the below:
 
@@ -23,6 +22,7 @@ A Dataform implementation of the same postcard company analytics model is availa
 
 Implementations with other tools with a different model:
 - [portable-data-stack-bruin](https://github.com/cnstlungu/portable-data-stack-bruin)
+- [postcard-company-dataform](https://github.com/cnstlungu/postcard-company-dataform)
 
 
 For the legacy version involving OLTP, CSV and JSON sources, check out the `legacy-oltp` branch.
