@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  schedule:
+    # Weekly. The stack builds against pinned upstream refs and published base
+    # images; a scheduled run surfaces drift here instead of in an issue report.
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compose:
+    name: Build and start the stack
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # Keep the CI dataset small; the demo default is set in docker-compose.yml.
+      N_TRANSACTIONS: 20000
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          mkdir -p shared/db
+          cp shared/db/datamart.duckdb.example shared/db/datamart.duckdb
+
+      - name: Build images
+        run: docker compose build
+
+      - name: Start the stack
+        run: docker compose up --detach
+
+      - name: Wait for services
+        run: |
+          wait_for() {
+            name="$1"
+            url="$2"
+            echo "Waiting for $name at $url"
+            for _ in $(seq 1 60); do
+              if curl --fail --silent --show-error --location --output /dev/null "$url"; then
+                echo "$name is reachable"
+                return 0
+              fi
+              sleep 5
+            done
+            echo "::error::$name never became reachable at $url"
+            return 1
+          }
+
+          wait_for Dagster http://localhost:3000
+          wait_for Superset http://localhost:8088
+
+      - name: Container status and logs on failure
+        if: failure()
+        run: |
+          docker compose ps --all
+          docker compose logs --no-color --tail=300
+
+      - name: Tear down
+        if: always()
+        run: docker compose down --volumes --remove-orphans
