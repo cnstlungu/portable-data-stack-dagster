@@ -3,14 +3,19 @@ services:
     build:
       context: .
       dockerfile: ./generator/Dockerfile
+      args:
+        DATAMART_REF: ${DATAMART_REF:-v1.0.0}
     volumes:
       - ./shared:/shared
     environment:
       INPUT_FILES_PATH: /shared/parquet
+      N_TRANSACTIONS: ${N_TRANSACTIONS:-100000}
   dbt:
     build:
       context: .
       dockerfile: ./dbt/Dockerfile
+      args:
+        DATAMART_REF: ${DATAMART_REF:-v1.0.0}
     volumes:
       - ./shared:/shared
       - ./dbt/postcard_company:/datamart/postcard_company
