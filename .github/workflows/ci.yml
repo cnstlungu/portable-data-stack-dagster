@@ -35,11 +35,6 @@ jobs:
           cp .env.example .env
           mkdir -p shared/db
           cp shared/db/datamart.duckdb.example shared/db/datamart.duckdb
-          # The Superset container runs as uid 1000 and DuckDB opens the warehouse
-          # read-write, so the bind-mounted file and its directory (for the .wal)
-          # have to be writable by a user the runner does not share a uid with.
-          chmod a+rwx shared/db
-          chmod a+rw shared/db/datamart.duckdb
 
       - name: Build images
         run: docker compose build
