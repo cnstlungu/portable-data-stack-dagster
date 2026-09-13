@@ -39,6 +39,15 @@ services:
         condition: service_completed_successfully
       dbt:
         condition: service_completed_successfully
+  # Superset runs as uid 1000 and opens the DuckDB warehouse read-write, but the
+  # bind-mounted file belongs to whoever created it on the host. Relax the mode
+  # here so the stack works regardless of the host user's uid.
+  init-db-permissions:
+    image: busybox
+    command: sh -c "chmod -R a+rwX /shared/db"
+    volumes:
+      - ./shared:/shared
+
   superset:
     build:
       context: .
@@ -57,4 +66,7 @@ services:
     volumes:
       - ./shared/db:/app/superset_home/db
     depends_on:
-      - dagster
+      dagster:
+        condition: service_started
+      init-db-permissions:
+        condition: service_completed_successfully
