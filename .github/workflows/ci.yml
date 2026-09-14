@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Prepare environment
         run: |
@@ -82,7 +82,7 @@ jobs:
       matrix: ${{ steps.collect.outputs.matrix }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Read the image refs out of the Dockerfiles and compose file
         id: collect
@@ -110,7 +110,7 @@ jobs:
       # control, so a fresh CVE should be visible here without turning the build
       # red until upstream ships a fix. Set exit-code to 1 to make it a gate.
       - name: Scan for known vulnerabilities
-        uses: aquasecurity/trivy-action@0.36.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: ${{ matrix.image }}
           severity: HIGH,CRITICAL
