@@ -1,0 +1,11 @@
+# duckdb must stay in step with superset/requirements.txt: both open the same
+# warehouse file, and a newer writer produces a format the reader cannot open.
+dagster==1.11.13
+dagster-dbt==0.27.13
+dagster-duckdb==0.27.13
+dagster-webserver==1.11.13
+dbt-core==1.10.15
+dbt-duckdb==1.10.0
+duckdb==1.4.4
+pydantic<2.9.0
+watchdog<5
