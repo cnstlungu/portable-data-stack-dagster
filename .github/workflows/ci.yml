@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Prepare environment
         run: |
@@ -82,7 +82,7 @@ jobs:
       matrix: ${{ steps.collect.outputs.matrix }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Read the image refs out of the Dockerfiles and compose file
         id: collect
