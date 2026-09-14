@@ -1,0 +1,5 @@
+# duckdb must match the version the pipeline image writes with. Superset opens
+# the same warehouse file, and a newer duckdb writes a format an older reader
+# cannot open, so these two move together.
+duckdb-engine==0.17.0
+duckdb==1.4.4

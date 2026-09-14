@@ -71,3 +71,49 @@ jobs:
       - name: Tear down
         if: always()
         run: docker compose down --volumes --remove-orphans
+
+  images:
+    name: Collect base images
+    # Only on the weekly run and on demand: base images change far less often
+    # than the code, and pulling them on every PR would slow the gate for nothing.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.collect.outputs.matrix }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Read the image refs out of the Dockerfiles and compose file
+        id: collect
+        run: |
+          matrix=$(
+            {
+              grep -h '^FROM ' */Dockerfile | awk '{print $2}'
+              grep -hE '^[[:space:]]+image: ' docker-compose.yml | awk '{print $2}'
+            } | grep -v '\${' | sort -u | jq -R . | jq -sc .
+          )
+          echo "$matrix"
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+
+  scan:
+    name: Scan ${{ matrix.image }}
+    needs: images
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ${{ fromJSON(needs.images.outputs.matrix) }}
+    steps:
+      # Reports rather than gates. These are upstream releases we pin but do not
+      # control, so a fresh CVE should be visible here without turning the build
+      # red until upstream ships a fix. Set exit-code to 1 to make it a gate.
+      - name: Scan for known vulnerabilities
+        uses: aquasecurity/trivy-action@0.36.0
+        with:
+          image-ref: ${{ matrix.image }}
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          format: table
+          exit-code: "0"

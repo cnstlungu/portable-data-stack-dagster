@@ -9,7 +9,8 @@ USER root
 RUN pip install uv
 
 COPY --chown=superset:superset ./superset/assets .
-RUN uv pip install --system duckdb-engine==0.17.0 duckdb==1.4.4
+COPY ./superset/requirements.txt /tmp/requirements.txt
+RUN uv pip install --system -r /tmp/requirements.txt
 USER superset
 RUN superset fab create-admin \
               --username ${SUPERSET_ADMIN} \
