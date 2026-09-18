@@ -3,7 +3,7 @@ FROM python:3.11-slim
 # Pin the shared dbt model / generator to a tagged release of
 # https://github.com/cnstlungu/postcard-company-datamart
 # Override with: docker compose build --build-arg DATAMART_REF=main
-ARG DATAMART_REF=v1.1.0
+ARG DATAMART_REF=v1.2.0
 
 RUN apt-get update && apt-get install -y git make automake gcc g++ subversion
 
