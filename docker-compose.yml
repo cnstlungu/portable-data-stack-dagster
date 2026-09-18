@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: ./generator/Dockerfile
       args:
-        DATAMART_REF: ${DATAMART_REF:-v1.1.0}
+        DATAMART_REF: ${DATAMART_REF:-v1.2.0}
     volumes:
       - ./shared:/shared
     environment:
@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: ./dbt/Dockerfile
       args:
-        DATAMART_REF: ${DATAMART_REF:-v1.1.0}
+        DATAMART_REF: ${DATAMART_REF:-v1.2.0}
     volumes:
       - ./shared:/shared
       - ./dbt/postcard_company:/datamart/postcard_company
