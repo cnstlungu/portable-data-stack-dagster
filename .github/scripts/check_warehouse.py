@@ -36,11 +36,16 @@ def expected_rows():
 
 
 def fact_rows():
-    """Row count of fact_sales, or None while it is not readable yet.
+    """Largest row count of any fact_sales in the warehouse, or None.
 
-    The schema is looked up rather than assumed: the engines in these repos do
-    not all name it the same way. A writer holding the file, or a table that
-    does not exist yet, is a "not yet", not a failure.
+    The schema is looked up rather than assumed, because the engines across
+    these repos do not name it alike. information_schema covers views as well
+    as tables, which matters for SQLMesh: it keeps the physical tables under
+    mangled names and exposes fact_sales as a view in its virtual layer, so
+    looking only at tables finds nothing even after a successful plan.
+
+    A writer still holding the file, or a model that does not exist yet, is a
+    "not yet" rather than a failure.
     """
     try:
         con = duckdb.connect(WAREHOUSE, read_only=True)
@@ -48,11 +53,24 @@ def fact_rows():
         return None
     try:
         found = con.execute(
-            "select schema_name from duckdb_tables() where table_name = 'fact_sales'"
+            "select table_schema from information_schema.tables "
+            "where table_name = 'fact_sales'"
         ).fetchall()
         if not found:
             return None
-        return con.execute(f'select count(*) from "{found[0][0]}".fact_sales').fetchone()[0]
+        counts = {}
+        for (schema,) in found:
+            try:
+                counts[schema] = con.execute(
+                    f'select count(*) from "{schema}".fact_sales'
+                ).fetchone()[0]
+            except Exception:
+                continue
+        if not counts:
+            return None
+        if len(counts) > 1:
+            print(f"    found fact_sales in {counts}", flush=True)
+        return max(counts.values())
     except Exception:
         return None
     finally:
