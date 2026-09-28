@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: ./generator/Dockerfile
       args:
-        DATAMART_REF: ${DATAMART_REF:-v1.1.0}
+        DATAMART_REF: ${DATAMART_REF:-v1.2.0}
     volumes:
       - ./shared:/shared
     environment:
@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: ./dbt/Dockerfile
       args:
-        DATAMART_REF: ${DATAMART_REF:-v1.1.0}
+        DATAMART_REF: ${DATAMART_REF:-v1.2.0}
     volumes:
       - ./shared:/shared
       - ./dbt/postcard_company:/datamart/postcard_company
@@ -52,17 +52,15 @@ services:
     build:
       context: .
       dockerfile: ./superset/Dockerfile
-      args:
-        SUPERSET_ADMIN: $SUPERSET_ADMIN
-        SUPERSET_PASSWORD: $SUPERSET_PASSWORD
-        SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY}
     environment:
+      # Read by superset/entrypoint.sh when the container starts. These were
+      # build args until it turned out `docker history` shows them.
+      SUPERSET_ADMIN: ${SUPERSET_ADMIN}
+      SUPERSET_PASSWORD: ${SUPERSET_PASSWORD}
       SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY}
     ports:
         - "8088:8088"
     command:     gunicorn --bind  "0.0.0.0:8088" --access-logfile '-' --error-logfile '-' --workers 1 --worker-class gthread --threads 20 --timeout 60 --limit-request-line 0 --limit-request-field_size 0 "superset.app:create_app()"
-    post_start:
-      - command: "superset import-dashboards -p ./dashboard.zip -u ${SUPERSET_ADMIN}"
     volumes:
       - ./shared/db:/app/superset_home/db
     depends_on:

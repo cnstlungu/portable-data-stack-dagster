@@ -34,6 +34,14 @@ For the legacy version involving OLTP, CSV and JSON sources, check out the `lega
 
 1. Rename `.env.example` file to `.env` and set your desired password. Remember to never commit files containing passwords or any other sensitive information.
 
+   The `SUPERSET_SECRET_KEY` in `.env.example` is a placeholder that every fork
+   of this repository shares, and Superset signs session cookies with it.
+   Generate your own before the stack is reachable by anyone but you:
+
+   ```bash
+   openssl rand -base64 42
+   ```
+
 2. Rename `shared/db/datamart.duckdb.example` to `shared/db/datamart.duckdb` or init an empty database file there with that name.
 
 3. With **Docker Engine** installed, change directory to the root folder of the project (also the one that contains docker-compose.yml) and run

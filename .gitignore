@@ -20,3 +20,4 @@ dbt/postcard_company/*
 # Keeps
 !geography.csv
 !dashboard.json
+.DS_Store
