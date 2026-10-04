@@ -70,6 +70,41 @@ jobs:
           docker compose exec -T dagster dagster asset materialize --select '*' -f /definitions.py
           docker compose exec -T dagster python - < .github/scripts/check_warehouse.py
 
+      # Superset reads the warehouse with its own duckdb, pinned in
+      # postcard-company-datamart's superset/requirements.txt rather than in
+      # this repo. A newer writer here would produce a file it cannot open.
+      - name: Check Superset can read the warehouse
+        run: |
+          docker compose exec -T superset python - <<'CHECK'
+          import time
+
+          import duckdb
+
+          error = None
+          for _ in range(60):
+              try:
+                  con = duckdb.connect("/app/superset_home/db/datamart.duckdb", read_only=True)
+              except duckdb.Error as e:
+                  # Either a pipeline process still holds the file, which clears,
+                  # or the format is one this duckdb cannot read, which does not.
+                  error = e
+                  time.sleep(5)
+                  continue
+              schemas = con.execute(
+                  "select table_schema from information_schema.tables"
+                  " where table_name = 'fact_sales'"
+              ).fetchall()
+              counts = {
+                  s: con.execute(f'select count(*) from "{s}".fact_sales').fetchone()[0]
+                  for (s,) in schemas
+              }
+              con.close()
+              print(f"Superset's duckdb {duckdb.__version__} sees fact_sales rows: {counts}")
+              assert counts and max(counts.values()) > 0, "Superset sees no fact_sales rows"
+              raise SystemExit(0)
+          raise SystemExit(f"Superset's duckdb {duckdb.__version__} cannot open the warehouse: {error}")
+          CHECK
+
       - name: Container status and logs on failure
         if: failure()
         run: |
