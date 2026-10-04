@@ -1,8 +1,10 @@
 # dbt-core 1.10 is deprecated as of the dbt v2 release. Reaching 1.12 needs
 # dagster-dbt >= 0.29 (0.27 caps dbt-core at <1.11), which pins dagster to the
 # matching 1.13 release.
-# duckdb must stay in step with superset/requirements.txt: both open the same
-# warehouse file, and a newer writer produces a format the reader cannot open.
+# duckdb must stay in step with superset/requirements.txt in
+# postcard-company-datamart at the DATAMART_REF in docker-compose.yml, which
+# the Superset image is built from: both open the same warehouse file, and a
+# newer writer produces a format the reader cannot open.
 dagster==1.13.23
 dagster-dbt==0.29.23
 dagster-duckdb==0.29.23
