@@ -5,12 +5,12 @@
 # postcard-company-datamart at the DATAMART_REF in docker-compose.yml, which
 # the Superset image is built from: both open the same warehouse file, and a
 # newer writer produces a format the reader cannot open.
-dagster==1.13.23
-dagster-dbt==0.29.23
-dagster-duckdb==0.29.23
-dagster-webserver==1.13.23
-dbt-core==1.12.5
+dagster==1.13.26
+dagster-dbt==0.29.26
+dagster-duckdb==0.29.26
+dagster-webserver==1.13.26
+dbt-core==1.12.6
 dbt-duckdb==1.11.0
-duckdb==1.4.4
+duckdb==1.5.6
 pydantic<2.9.0
 watchdog<5
