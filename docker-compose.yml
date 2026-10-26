@@ -4,7 +4,7 @@ services:
   # To build from another branch or tag: DATAMART_REF=main docker compose build
   generator:
     build:
-      context: https://github.com/cnstlungu/postcard-company-datamart.git#${DATAMART_REF:-v1.4.0}:generator
+      context: https://github.com/cnstlungu/postcard-company-datamart.git#${DATAMART_REF:-v1.5.0}:generator
     volumes:
       - ./shared:/shared
     environment:
@@ -15,7 +15,7 @@ services:
   # project, so edits you make there survive restarts.
   dbt:
     build:
-      context: https://github.com/cnstlungu/postcard-company-datamart.git#${DATAMART_REF:-v1.4.0}:postcard_company
+      context: https://github.com/cnstlungu/postcard-company-datamart.git#${DATAMART_REF:-v1.5.0}:postcard_company
     volumes:
       - ./dbt/postcard_company:/datamart/postcard_company
   dagster:
@@ -47,7 +47,7 @@ services:
 
   superset:
     build:
-      context: https://github.com/cnstlungu/postcard-company-datamart.git#${DATAMART_REF:-v1.4.0}:superset
+      context: https://github.com/cnstlungu/postcard-company-datamart.git#${DATAMART_REF:-v1.5.0}:superset
     environment:
       # Read by the datamart's superset/entrypoint.sh at container start. These were
       # build args until it turned out `docker history` shows them.
